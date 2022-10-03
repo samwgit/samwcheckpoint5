@@ -45,7 +45,7 @@ export default {
         try {
           await postsService.likePost(id)
         } catch (error) {
-          Pop.error('[Like Failed]', error)
+          Pop.error('[You are not logged in!]', error)
         }
       }
     };

@@ -87,10 +87,10 @@ export default {
       }
     }
     onBeforeMount(() => {
+      getPosts()
       getAdvert()
     })
     onMounted(() => {
-      getPosts()
     });
     return {
       // nextPage: computed(() => AppState.nextPage),
