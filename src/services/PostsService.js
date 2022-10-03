@@ -24,9 +24,11 @@ class PostsService {
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
 
-  async likePost() {
+  async likePost(id) {
     // TODO pass the id of the post you have clicked on in place of ':id'
-    const res = await SandboxApi.post(`api/posts/:id/like`)
+    const res = await SandboxApi.post(`api/posts/${id}/like`)
+    const index = AppState.posts.findIndex(p => p.id == id)
+    AppState.posts[index] = res.data
   }
 
   async createPost(formData) {

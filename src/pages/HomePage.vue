@@ -49,12 +49,7 @@
   </div>
 
   <!-- FIXME ChangePage is broken -->
-  <div class="container-fluid">
-    <div class="row justify-content-around mt-5">
-      <button @click="changePage(previousPage)" class="btn btn-success w-25">Previous Page (Broken)</button>
-      <button @click="changePage(nextPage)" class="btn btn-success w-25 justify-self-end">Next Page (Broken)</button>
-    </div>
-  </div>
+  <ChangePage />
 </template>
 
 <script>
@@ -70,6 +65,7 @@ import Advert from '../components/AdvertComp.vue';
 import { SandboxApiPosts } from '../services/AxiosService.js';
 import { logger } from '../utils/Logger.js';
 import { advertService } from '../services/AdvertService.js';
+import ChangePage from '../components/ChangePage.vue';
 
 
 export default {
@@ -109,7 +105,7 @@ export default {
     };
 
   },
-  components: { Post, PostForm, Advert }
+  components: { Post, PostForm, Advert, ChangePage }
 }
 </script>
 

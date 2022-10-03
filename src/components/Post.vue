@@ -14,7 +14,7 @@
       <p class="card-text">{{post.body}}</p>
     </div>
     <div class="card-footer">
-      <span @click="like()" class="mdi mdi-thumb-up-outline btn btn-success fs-5"></span>
+      <span @click="like(post.id)" class="mdi mdi-thumb-up-outline btn btn-success fs-5"></span>
       <span class="m-3 fs-4 align-self-center">
         {{post.likes.length}}
       </span>
@@ -41,9 +41,9 @@ export default {
   },
   setup() {
     return {
-      async like() {
+      async like(id) {
         try {
-          await postsService.likePost()
+          await postsService.likePost(id)
         } catch (error) {
           Pop.error('[Like Failed]', error)
         }
