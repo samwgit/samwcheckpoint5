@@ -1,14 +1,19 @@
 <template>
-  <div class="">
+  <div>
     <!-- FIXME Line Below -->
-    <!-- <img :src="advert.banner" alt="broken."> -->
-    <img src="https://us.coca-cola.com/static-src/content/dam/coke2016/navheader/nav_coke.jpg" alt="bad">
+    <span class="ad-resize">
+      <img :src="advert[0].square" alt="broken.">
+      <img :src="advert[1].square" alt="broken.">
+    </span>
+    <!-- <img src="https://us.coca-cola.com/static-src/content/dam/coke2016/navheader/nav_coke.jpg" alt="bad"> -->
   </div>
-  <h5>Check Network tab they are there just not here...</h5>
+
 </template>
 
-<!-- FIXME replace src with :src="advert.banner" when it does not come back as undefined for some reason... -->
+
 <script>
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState.js';
 import { Advert } from '../models/Advert.js';
 export default {
   props: {
@@ -18,7 +23,10 @@ export default {
     }
   },
   setup() {
-    return {}
+    return {
+      // NOTE THIS IS HOW YOU PASS A PROP FROM THE APP STATE
+      advert: computed(() => AppState.advert),
+    }
   }
 }
 </script>
@@ -28,5 +36,10 @@ export default {
 .resize {
   height: 50px;
   width: 50px;
+}
+
+.ad-resize {
+  height: 200px;
+  width: 500px;
 }
 </style>

@@ -34,7 +34,10 @@
           <img class="dancing-doge" src="https://custom-progress-bar.com/cdn/images/64/doge-dance-meme.gif" alt="">
           <img class="dancing-doge" src="https://custom-progress-bar.com/cdn/images/64/doge-dance-meme.gif" alt="">
         </span>
-        <Advert />
+        <!-- TODO add prop for the advertisement data to be passed to the advert -->
+        <span class="ad-resize">
+          <Advert />
+        </span>
       </div>
     </div>
   </div>
@@ -48,7 +51,7 @@
   <!-- FIXME ChangePage is broken -->
   <div class="container-fluid">
     <div class="row justify-content-around mt-5">
-      <button @click="changePage(previousPage + '?page=2')" class="btn btn-success w-25">Previous Page (Broken)</button>
+      <button @click="changePage(previousPage)" class="btn btn-success w-25">Previous Page (Broken)</button>
       <button @click="changePage(nextPage)" class="btn btn-success w-25 justify-self-end">Next Page (Broken)</button>
     </div>
   </div>
@@ -57,7 +60,7 @@
 <script>
 
 import { computed } from '@vue/reactivity';
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Post from '../components/Post.vue';
 import { postsService } from '../services/PostsService.js';
@@ -87,23 +90,17 @@ export default {
         Pop.error("[Getting Adverts Failed!], error")
       }
     }
+    onBeforeMount(() => {
+      getAdvert()
+    })
     onMounted(() => {
       getPosts()
-      getAdvert()
     });
     return {
       // nextPage: computed(() => AppState.nextPage),
       // previousPage: computed(() => AppState.previousPage),
       advert: computed(() => AppState.advert),
-      async changePage(pageUrl) {
-        try {
-          // window.alert('Broken Does Not Work')
-          await SandboxApiPosts.getPosts(pageUrl)
-        } catch (error) {
-          logger.error(error)
-          Pop.error('[ChangePage Failed!]', error)
-        }
-      },
+
 
 
       account: computed(() => AppState.account),
@@ -120,6 +117,11 @@ export default {
 .user-img {
   min-height: 50px;
   min-width: 50px;
+}
+
+.ad-resize {
+  height: 200px;
+  width: 500px;
 }
 
 .user-panel {

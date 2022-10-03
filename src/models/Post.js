@@ -8,5 +8,7 @@ export class Post {
     this.creator = data.creator
     this.createdAt = data.createdAt
     this.likes = data.likes
+    this.newer = data.newer
+    this.older = data.older
   }
 }
