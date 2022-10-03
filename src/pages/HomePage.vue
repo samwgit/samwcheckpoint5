@@ -19,7 +19,7 @@
       <div class="col-5 text-center">
         <h1>Welcome To DogeBook</h1>
         <h2 class="mb-5">Enjoy your stay</h2>
-        <h4 class="text-center">⬇️ DogeBook is sponsered by ⬇️</h4>
+        <h4 class="text-center">⬇️ DogeBook is sponsored by ⬇️</h4>
         <span class="dancing-doggies">
           <img class="dancing-doge" src="https://custom-progress-bar.com/cdn/images/64/doge-dance-meme.gif" alt="">
           <img class="dancing-doge" src="https://custom-progress-bar.com/cdn/images/64/doge-dance-meme.gif" alt="">
