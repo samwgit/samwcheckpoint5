@@ -23,7 +23,7 @@ class PostsService {
   }
 
   async likePost() {
-    const res = await SandboxApi.put(`${post.creatorId}`)
+    const res = await SandboxApi.get('api/posts/:id/like')
   }
 
   async createPost(formData) {

@@ -41,13 +41,13 @@ export default {
   },
   setup() {
     return {
-      // like() {
-      //   try {
-      //     await postsService.likePost
-      //   } catch (error) {
-      //     Pop.error('[Like Failed]', error)
-      //   }
-      // }
+      async like() {
+        try {
+          await postsService.likePost()
+        } catch (error) {
+          Pop.error('[Like Failed]', error)
+        }
+      }
     };
   },
   components: { PostCreator }
