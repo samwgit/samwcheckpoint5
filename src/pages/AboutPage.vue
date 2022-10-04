@@ -1,5 +1,5 @@
 <template>
-  <div class="about text-center bg-dark">
+  <!-- <div class="about text-center bg-dark">
     <h1>Welcome to DogeBook</h1>
     <img
       src="https://jdsupra-html-images.s3-us-west-1.amazonaws.com/db4b8dbc-814c-4fb6-9e42-bfd5393fdace-doge-e1633357157847.png"
@@ -12,7 +12,7 @@
   </div>
   <span class="text-center">
     <AdvertComp />
-  </span>
+  </span> -->
 </template>
 
 <script>

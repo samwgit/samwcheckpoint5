@@ -35,9 +35,9 @@
           <img class="dancing-doge" src="https://custom-progress-bar.com/cdn/images/64/doge-dance-meme.gif" alt="">
         </span>
         <!-- TODO add prop for the advertisement data to be passed to the advert -->
-        <span class="ad-resize">
-          <Advert />
-        </span>
+
+        <AdvertComp v-for="a in advert" :key="a.id" :advert="advert" />
+
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-
+let page = 1
 import { computed } from '@vue/reactivity';
 import { onBeforeMount, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
@@ -66,6 +66,7 @@ import { SandboxApiPosts } from '../services/AxiosService.js';
 import { logger } from '../utils/Logger.js';
 import { advertService } from '../services/AdvertService.js';
 import ChangePage from '../components/ChangePage.vue';
+import AdvertComp from '../components/AdvertComp.vue';
 
 
 export default {
@@ -91,6 +92,7 @@ export default {
       getAdvert()
     })
     onMounted(() => {
+
     });
     return {
       // nextPage: computed(() => AppState.nextPage),
@@ -105,7 +107,7 @@ export default {
     };
 
   },
-  components: { Post, PostForm, Advert, ChangePage }
+  components: { Post, PostForm, Advert, ChangePage, AdvertComp }
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <span class="text-center">
-    <AdvertComp />
+    <AdvertComp v-for="a in advert" :key="a.id" :advert="advert" />
+
   </span>
   <div class="about text-center mt-5">
     <h1>Welcome {{ account.name }}</h1>
@@ -20,13 +21,14 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState'
 import AccountForm from '../components/AccountForm.vue';
+import AdvertComp from '../components/AdvertComp.vue';
 export default {
   setup() {
     return {
       account: computed(() => AppState.account)
     };
   },
-  components: { AccountForm }
+  components: { AccountForm, AdvertComp, }
 }
 </script>
 

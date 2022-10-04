@@ -6,7 +6,8 @@
     </div>
   </div>
   <span class="text-center">
-    <AdvertComp />
+    <AdvertComp v-for="a in advert" :key="a.id" :advert="advert" />
+
   </span>
   <!-- <ChangePage /> -->
 </template>
@@ -84,7 +85,7 @@ export default {
       advert: computed(() => AppState.advert)
     };
   },
-  components: { ProfileDetail, Post, AdvertComp, ChangePage }
+  components: { ProfileDetail, Post, AdvertComp, ChangePage, AdvertComp }
 }
 </script>
 

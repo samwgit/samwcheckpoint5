@@ -2,8 +2,8 @@
   <div>
     <!-- FIXME Line Below -->
     <span class="ad-resize">
-      <img :src="advert[0].square" alt="broken.">
       <img :src="advert[1].square" alt="broken.">
+      <img :src="advert[0].square" alt="broken.">
     </span>
     <!-- <img src="https://us.coca-cola.com/static-src/content/dam/coke2016/navheader/nav_coke.jpg" alt="bad"> -->
   </div>

@@ -30,18 +30,15 @@ class PostsService {
   }
 
 
-  async getPostsByCreatorId(creatorId) {
+  async getPostsByCreatorId(id) {
     AppState.posts = []
-    const res = await SandboxApi.get('api/posts', {
-      params: {
-        creatorId
-      }
+    const res = await SandboxApi.get(`api/profiles/${id}/posts`, {
+
     })
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
 
   async likePost(id) {
-    // TODO pass the id of the post you have clicked on in place of ':id'
     const res = await SandboxApi.post(`api/posts/${id}/like`)
     const index = AppState.posts.findIndex(p => p.id == id)
     // AppState.posts[index] = res.data
