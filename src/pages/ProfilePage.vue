@@ -8,7 +8,7 @@
   <span class="text-center">
     <AdvertComp />
   </span>
-
+  <!-- <ChangePage /> -->
 </template>
 
 
@@ -17,14 +17,24 @@ import ProfileDetail from '../components/ProfileDetail.vue';
 import { profilesService } from '../services/ProfilesService.js'
 import Pop from '../utils/Pop.js';
 import { useRoute } from "vue-router";
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import Post from "../components/Post.vue";
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
 import AdvertComp from '../components/AdvertComp.vue';
+import ChangePage from '../components/ChangePage.vue';
+import { advertService } from '../services/AdvertService.js';
 export default {
   setup() {
+    async function getAdvert() {
+      try {
+        await advertService.getAdvert()
+      } catch (error) {
+        Pop.error("[Getting Adverts Failed!], error")
+      }
+    }
+
     const route = useRoute();
 
 
@@ -51,18 +61,30 @@ export default {
         Pop.error(error, '[GetProfilePosts]')
       }
     }
+    onBeforeMount(() => {
+      // getProfileById()
+      // getPostsByCreatorId()
+      getAdvert()
+
+    })
 
     onMounted(() => {
-      getProfileById()
-      getPostsByCreatorId()
+      // getProfileById()
+      // getPostsByCreatorId()
       // getPosts()
+
     });
+    getProfileById()
+
+    getPostsByCreatorId()
     return {
+
       profile: computed(() => AppState.activeProfile),
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      advert: computed(() => AppState.advert)
     };
   },
-  components: { ProfileDetail, Post, AdvertComp }
+  components: { ProfileDetail, Post, AdvertComp, ChangePage }
 }
 </script>
 

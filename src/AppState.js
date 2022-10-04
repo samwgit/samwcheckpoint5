@@ -11,10 +11,10 @@ export const AppState = reactive({
   activeProfile: {},
   /** @type {import('./models/Post.js').Post} */
   post: {},
-  olderPage: null,
-  newerPage: null,
   /** @type {import('./models/Advert.js').Advert} */
   advert: {},
+  /** @type {import('./models/Cpage.js').Cpage} */
+  Cpage: null,
 
 
 })

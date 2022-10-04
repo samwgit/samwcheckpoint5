@@ -3,7 +3,7 @@
     <div class="card-header">
 
       <PostCreator :creator="post.creator" />
-      <span>{{post.createdAt}}</span>
+      <span id="date">{{post.createdAt }}</span>
     </div>
 
 
@@ -13,11 +13,16 @@
       <div class="border bg-dark"></div>
       <p class="card-text">{{post.body}}</p>
     </div>
-    <div class="card-footer">
-      <span @click="like(post.id)" class="mdi mdi-thumb-up-outline btn btn-success fs-5"></span>
-      <span class="m-3 fs-4 align-self-center">
-        {{post.likes.length}}
-      </span>
+    <div class="card-footer justify-content-around d-flex">
+      <div>
+
+        <span @click="like(post.id)" class="mdi mdi-thumb-up-outline btn btn-success fs-5"></span>
+        <span class="m-3 fs-4 align-self-center">
+          {{post.likes.length}}
+        </span>
+      </div>
+      <div @click="deletePost(post.id)" v-if="account.id == post.creator.id" class="btn btn-danger text-end">Delete!
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +46,31 @@ export default {
   },
   setup() {
     return {
+      account: computed(() => AppState.account),
+
+      async deletePost(id) {
+        try {
+          if (await Pop.confirm('You sure you want to delete?')) {
+            postsService.deletePost(id)
+          }
+        } catch (error) {
+          Pop.error(error, '[Delete Post]')
+        }
+      },
+
+
+
+
+
+      async formatDate(date) {
+        let isoDate = this.createdAt
+        date = isoDate.substring(0, 10)
+        let datePicker = document.getElementById('date')
+        datePicker.value = date
+        datePicker.max = date
+      },
+
+
       async like(id) {
         try {
           await postsService.likePost(id)

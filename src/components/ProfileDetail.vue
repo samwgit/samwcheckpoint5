@@ -14,11 +14,11 @@
 
 
         </h3>
-        <p class="m-3">Graduated? {{profile.graduated}}</p>
-        <p class="m-3">Github: {{profile.github}}</p>
-        <p class="m-3">Linkedin: {{profile.linkedin}}</p>
-        <p class="m-3">Class: {{profile.class}}</p>
-        <p class="m-3">Bio: {{ profile.bio }}</p>
+        <p class="m-3">Graduated? <span class="text-uppercase">{{profile.graduated}}!</span></p>
+        <p v-if="profile.github" class="m-3">Github: {{profile.github}}</p>
+        <p v-if="profile.linkedin" class="m-3">Linkedin: {{profile.linkedin}}</p>
+        <p v-if="profile.class" class="m-3">Class: {{profile.class}}</p>
+        <p v-if="profile.bio" class="m-3">Bio: {{ profile.bio }}</p>
       </div>
     </div>
 
