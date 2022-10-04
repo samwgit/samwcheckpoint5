@@ -24,8 +24,8 @@ export default {
   },
   setup() {
     return {
-      // NOTE THIS IS HOW YOU PASS A PROP FROM THE APP STATE
       advert: computed(() => AppState.advert),
+      // NOTE THIS IS HOW YOU PASS A PROP FROM THE APP STATE
     }
   }
 }
